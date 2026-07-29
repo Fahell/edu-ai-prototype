@@ -4,6 +4,12 @@ All notable changes to this project are documented here. This log is updated eve
 
 ---
 
+## [2026-07-29] — Bug Fixes (Batch 7 review)
+
+### Fixed
+- **heat-map.js** — Changed `toISOString()` (UTC) to `toLocaleDateString('en-CA')` (local time) to match gamification.js convention, fixing timezone mismatch where heatmap wouldn't show activity recorded on the same local day
+- **ghost-race.js** — Fixed timing math: replaced misleading `duration/100` interval with fixed 200ms ticks and proportional base increments, so race actually takes ~duration ms instead of always ~12s
+
 ## [Unreleased]
 
 - Phase 1 implementation in progress (Batches 1+2 complete, Batches 3-7 pending)
