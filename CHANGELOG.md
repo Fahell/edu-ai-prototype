@@ -143,3 +143,36 @@ All notable changes to this project are documented here. This log is updated eve
 - **css/widgets.css** — Added Firefox slider thumb (`::-moz-range-thumb`) alongside webkit thumb for cross-browser support
 - **js/mock/ai-responses.js** — Added slash command templates for `/skip`, `/review`, `/quiz`, `/persona` (previously returned fallback)
 - **js/pages/study.js** — Wrapped `_startLesson()` in try/catch with user-facing error message and state cleanup on failure
+
+## [2026-07-29] — Batch 7: App Bootstrapper & Complete Implementation
+
+### Added
+- **js/app.js** — Main bootstrapper: async state init → theme application → Modal.init → Sidebar render+init → 6 route registrations → Router.init → silent streak check → loading state removal → keyboard shortcuts (Ctrl+K search, Escape close modal) → first-run welcome toast
+- **js/services/srs.js** — Spaced Repetition System: getNextReviewDate (ease-based intervals), getDueCards, recordReview, getStats (due/learning/mastered)
+- **js/services/mastery-predictor.js** — Mastery prediction: predictModuleMastery (correct/total %), predictSubjectMastery (per-module breakdown), getRadarData (all subjects)
+- **js/widgets/true-false.js** — True/False widget: clickable buttons, correct/wrong feedback, XP integration (10/2)
+- **js/widgets/fill-blank.js** — Fill-in-the-blank: inline input with acceptable answers array, Enter key submit, XP (15/3)
+- **js/widgets/drag-drop.js** — Drag & Drop ordering: HTML5 drag events, shuffle, touch support, XP (20/3)
+- **js/widgets/slider.js** — Slider range: numeric input with tolerance-based validation, XP (10/2)
+- **js/widgets/canvas-draw.js** — Canvas drawing: multi-color picker, touch support, clear button, XP (10)
+- **js/components/modal.js** — Modal dialog: overlay click/Escape close, open/close API, onClose callback
+- **js/components/confetti.js** — Canvas particle burst: 80 particles, gravity, rotation, fade, configurable duration
+- **js/components/avatar.js** — Avatar renderer: user (with level ring) and NPC variants, 4 sizes
+- **js/components/mascot.js** — Mascot with 4 evolution stages (Lv 1/6/16/30), glow effects
+- **js/components/slash-commands.js** — Slash command menu: 7 commands, text filtering, click-to-insert
+- **js/components/ghost-race.js** — Ghost race widget: NPC vs user progress bars, configurable speed
+- **js/components/heat-map.js** — GitHub-style heatmap: 12-week grid, 5 intensity levels from activityHeatMap state
+- **js/components/radar-chart.js** — SVG radar chart: mastery data visualization, grid circles, data polygon, icon labels
+- **js/components/knowledge-graph.js** — SVG knowledge graph: circular node layout, edge arrows, completed node highlighting
+- **js/components/daily-mix.js** — Daily mix generator: SRS due cards + in-progress + new subjects, configurable count
+- **js/components/matrix-upload.js** — Matrix canvas animation: falling green characters, auto-stop, configurable duration
+- **js/pages/profile.js** — Profile page: header with avatar/stats, XP bar, radar chart, heatmap, achievements, knowledge graph
+- **js/pages/triagem.js** — Triage page: 5-step questionnaire (text + options), progress bar, AI loading simulation, completion screen
+- **js/pages/review-shorts.js** — Review page: SRS due cards, stats (due/learning/mastered), warm-up puzzle with XP
+- **css/pages/profile.css** — Profile grid layout, gradient header, responsive breakpoints
+- **css/pages/triagem.css** — Triage form, option cards, progress bar, loading spinner, completion state
+- **css/pages/review-shorts.css** — Stats row, review cards, warm-up puzzle options with correct/wrong states
+
+### Changed
+- **index.html** — Added css/pages/review-shorts.css to CSS load order
+

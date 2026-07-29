@@ -1,0 +1,241 @@
+/* ═══════════════════════════════════════════════════════════
+   Triagem (Triage) Page Styles
+   ═══════════════════════════════════════════════════════════ */
+
+.triagem {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-6) 0;
+  animation: fadeIn var(--transition-base);
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.triagem__header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.triagem__title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-2);
+}
+
+.triagem__subtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── Progress Bar ─────────────────────────────────────────── */
+.triagem__progress {
+  margin-bottom: var(--space-8);
+}
+
+.triagem__progress-bar {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.triagem__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent, var(--color-primary)));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+.triagem__progress-label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+  display: block;
+}
+
+/* ── Step Content ─────────────────────────────────────────── */
+.triagem__step {
+  text-align: center;
+}
+
+.triagem__question {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  margin: 0 0 var(--space-6);
+  color: var(--color-text);
+}
+
+.triagem__input {
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+  margin-bottom: var(--space-4);
+}
+
+.triagem__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha, rgba(99, 102, 241, 0.15));
+}
+
+.triagem__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ── Option Cards ─────────────────────────────────────────── */
+.triagem__options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.triagem__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+.triagem__option:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-alpha, rgba(99, 102, 241, 0.05));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.triagem__option:active {
+  transform: translateY(0);
+}
+
+.triagem__option-label {
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── Next Button ──────────────────────────────────────────── */
+.triagem__next-btn {
+  margin-top: var(--space-4);
+  display: inline-block;
+}
+
+/* ── Loading State ────────────────────────────────────────── */
+.triagem__loading {
+  text-align: center;
+  padding: var(--space-10) 0;
+}
+
+.triagem__loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto var(--space-4);
+}
+
+.triagem__loading p {
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  margin: var(--space-2) 0;
+}
+
+.triagem__loading-sub {
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* ── Complete State ───────────────────────────────────────── */
+.triagem__complete {
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
+.triagem__complete-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+.triagem__complete-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0 0 var(--space-3);
+}
+
+.triagem__complete-text {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+/* ── Plan Preview ─────────────────────────────────────────── */
+.triagem__plan-preview {
+  max-width: 400px;
+  margin: 0 auto var(--space-6);
+}
+
+.triagem__plan-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+}
+
+.triagem__plan-icon {
+  font-size: 2rem;
+}
+
+.triagem__plan-name {
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+}
+
+.triagem__plan-meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+.triagem__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .triagem__options {
+    grid-template-columns: 1fr;
+  }
+
+  .triagem__option {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

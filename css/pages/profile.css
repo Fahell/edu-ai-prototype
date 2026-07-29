@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════════
+   Profile Page Styles
+   ═══════════════════════════════════════════════════════════ */
+
+.profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  max-width: 1000px;
+  margin: 0 auto;
+  animation: fadeIn var(--transition-base);
+}
+
+/* ── Header Card ──────────────────────────────────────────── */
+.profile__header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark, #4338ca));
+  color: white;
+  border-radius: var(--radius-xl);
+}
+
+.profile__user-block {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.profile__user-block .avatar--xl {
+  width: 80px;
+  height: 80px;
+  font-size: 2.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile__name {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  color: white;
+}
+
+.profile__title {
+  font-size: var(--text-sm);
+  opacity: 0.85;
+  margin-top: var(--space-1);
+}
+
+.profile__level {
+  font-size: var(--text-xs);
+  opacity: 0.7;
+  margin-top: var(--space-1);
+}
+
+.profile__stats {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.profile__stat {
+  text-align: center;
+}
+
+.profile__stat-value {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: white;
+}
+
+.profile__stat-label {
+  display: block;
+  font-size: var(--text-xs);
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--space-1);
+}
+
+/* ── XP Section ───────────────────────────────────────────── */
+.profile__xp-section {
+  grid-column: 1 / -1;
+}
+
+/* ── Mastery Chart ────────────────────────────────────────── */
+.profile__mastery {
+  min-height: 300px;
+}
+
+.profile__mastery .radar-chart-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) 0;
+}
+
+.profile__mastery .radar-chart {
+  max-width: 280px;
+  width: 100%;
+}
+
+/* ── Activity Heatmap ─────────────────────────────────────── */
+.profile__activity {
+  min-height: 180px;
+}
+
+/* ── Achievements ─────────────────────────────────────────── */
+.profile__achievements .badges-grid {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+/* ── Knowledge Graph ──────────────────────────────────────── */
+.profile__knowledge {
+  grid-column: 1 / -1;
+}
+
+.profile__knowledge .knowledge-graph-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) 0;
+}
+
+.profile__knowledge .knowledge-graph {
+  max-width: 500px;
+  width: 100%;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .profile {
+    grid-template-columns: 1fr;
+  }
+
+  .profile__header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-5);
+  }
+
+  .profile__stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
