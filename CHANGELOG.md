@@ -95,3 +95,14 @@ All notable changes to this project are documented here. This log is updated eve
 - Confirmed via GitHub issues #7, #8 — no maintainer response
 - Cloud Shell environment verified: 15GB RAM, 9GB disk free, Python 3.12, Node 24
 - Cleanup performed: removed perchance-mvp directory, Playwright cache, apt packages
+
+## [2026-07-29] — Batch 4: Shared Components & Gamification Services
+
+### Added
+- **css/components.css** — Component library: buttons (5 variants, 3 sizes, icon variant), cards (interactive, elevated, accent/success/warning), inputs/textareas with focus/error states, badges (6 color variants + dot), chips with active state, tooltips, avatars (4 sizes), generic progress bar, empty states, icon buttons
+- **css/gamification.css** — XP bar with shimmer animation and floating XP indicator, streak badge with fire flicker, coins display, level-up overlay with burst and text animations, badges grid (locked/unlocked), leaderboard table (top 3 colored), mascot container with glow effect, gamification-specific toast variants
+- **js/components/theme-toggle.js** — Sun/moon toggle: reads theme from state, applies data-theme to document, persists to state, subscribes to external changes
+- **js/components/toast.js** — Toast notification system: show(message, type, duration), auto-dismiss, manual dismiss, 8 types (success/error/info/warning/xp/badge/coins/level-up), injects fallback CSS styles inline
+- **js/services/gamification.js** — Core gamification engine: XP curve (100 * 1.5^(n-1)), level calculation, title system (7 tiers from Newcomer to Grand Master), addXP with level-up detection, addCoins, daily streak checking (consecutive/broken/reset), activity heatmap recording, badge award system with automatic checks, floating XP animation
+- **js/components/xp-bar.js** — Animated XP progress bar: renders level badge + title + fill bar, subscribes to user.xp and user.level state changes, smooth CSS transition on width
+- **js/components/streak-badge.js** — Fire icon badge: shows streak count with fire animation, inactive state with sleep icon, subscribes to user.streak changes
