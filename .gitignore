@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencies (none expected, but just in case)
+node_modules/
+
+# Build output (none expected)
+dist/
+build/
+
+# Logs
+*.log
+
+# Local state (user-specific, not tracked)
+# Note: localStorage is browser-only, not in repo
