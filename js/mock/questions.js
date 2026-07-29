@@ -31,9 +31,9 @@
         {
           id: 'math-0-1',
           type: 'true-false',
-          prompt: 'The result of 15 - 9 is an even number.',
+          prompt: 'The result of 15 - 9 is an odd number.',
           correctAnswer: false,
-          explanation: '15 - 9 = 6, which IS even. So the statement is true. Wait — 6 is even, so this is TRUE.',
+          explanation: '15 - 9 = 6, which is even, not odd. So the statement is false.',
           socraticHint: 'First calculate 15 - 9. Then ask yourself: is that result divisible by 2?',
         },
         {

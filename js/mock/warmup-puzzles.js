@@ -129,10 +129,10 @@
     {
       id: 'math-02',
       type: 'math',
-      prompt: 'How many triangles are in this number? Think: 7 + 8 = ?',
+      prompt: 'What is 7 + 8?',
       data: null,
       answer: 15,
-      hint: 'Simple addition. 7 + 8 = ?',
+      hint: 'Count up from 7: eight more steps gets you to 15.',
       difficulty: 'easy',
     },
     {

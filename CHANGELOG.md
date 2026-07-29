@@ -18,6 +18,8 @@ All notable changes to this project are documented here. This log is updated eve
 - **js/mock/npcs.js** — 10 NPCs with names, avatars, XP, levels, ghost race speeds, weekly XP scores. Live ticker with 5 name templates, badge names, subject names, 8 event templates. Helper functions: generateTickerEvent(), getWeeklyLeaderboard(), getGhostRacer(difficulty)
 - **js/mock/shop-items.js** — Shop catalog: 5 visual themes, 7 avatar accessories (face/head/held slots), 6 mascot accessories (face/head/aura/neck slots), 7 titles. Helper functions: getAllItems(), getShopItemById(itemId)
 - **js/mock/warmup-puzzles.js** — 17 warm-up puzzles across 6 types (sequence, pattern, logic, math, riddle, rotation) with difficulty ratings. Helper functions: getRandomPuzzle(difficulty), getPuzzleById(puzzleId), getPuzzles(type)
+- **Bug fix**: questions.js math-0-1 — prompt was "15-9 is even" (true) but correctAnswer was false. Changed to "15-9 is odd" (false) to match answer key
+- **Bug fix**: warmup-puzzles.js math-02 — confusing prompt about "triangles" replaced with clear "What is 7 + 8?"
 ---
 
 ## [2026-07-29] — Batch 1+2: CSS Design System & JS Core
