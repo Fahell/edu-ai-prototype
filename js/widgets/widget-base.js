@@ -82,7 +82,7 @@
       `;
 
       this._container.appendChild(feedbackEl);
-    },
+    }
 
     /**
      * Disable all interactive elements after answering.
@@ -92,7 +92,7 @@
         const widget = this._container.querySelector('.widget');
         if (widget) widget.classList.add('widget--disabled');
       }
-    },
+    }
 
     /**
      * Register a callback for when the answer is submitted.
