@@ -127,12 +127,12 @@ edu-ai-prototype/
 
 ## Implementation Phases
 
-| Phase | Focus | Key Deliverables |
-|-------|-------|-----------------|
-| **Phase 1** | Essential MVP | Scaffold, design system, sidebar, routing, dashboard, catalog, basic chat, 1 question type |
-| **Phase 2** | Interactivity | All 6 widgets, Socratic feedback, slash commands, warm-up puzzles, ghost racing |
-| **Phase 3** | Gamification | XP/levels, streaks, mascot, badges, ranking, ticker, coins/shop, SRS, heat map, daily mix |
-| **Phase 4** | Complete | Profile (radar chart), knowledge graph, mastery predictor, triage + Matrix Upload, AI Vision canvas, review shorts, stateful callbacks, polish |
+| Phase | Status | Focus | Key Deliverables |
+|-------|--------|-------|-----------------|
+| **Phase 1** | ✅ **Complete** | Essential MVP | All 7 batches delivered: scaffold, design system, sidebar, routing, dashboard, catalog, chat with 6 widgets, full gamification, SRS, knowledge graph, radar chart, heatmap, triage, profile, review shorts |
+| **Phase 2** | 🔲 Planned | Polish & Interactivity | Warm-up puzzle flow in chat, shop page, stateful AI callbacks, improved drag-drop physics, avatar/mascot customization, mobile optimization |
+| **Phase 3** | 🔲 Planned | Real AI Integration | Replace mocks with real AI (LLM API), web content ingestion, vector DB per user, real-time content fetching, OCR for PDFs/videos |
+| **Phase 4** | 🔲 Planned | Production | Backend, auth, multi-tenant, payment, deployment, analytics, accessibility audit |
 
 ## Technical Decisions
 

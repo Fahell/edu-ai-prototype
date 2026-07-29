@@ -120,13 +120,29 @@ The AI is fully mocked. When adding new responses:
 ## Testing
 
 There is no test framework. Validate by:
-1. Opening `index.html` in a browser
-2. Navigating all routes via sidebar
-3. Completing a full lesson flow (warm-up → explanation → 3 questions → module complete)
-4. Testing light/dark theme toggle
-5. Verifying localStorage persistence across page refresh
-6. Testing slash commands in chat input
-7. Checking mascot evolution reacts to level changes
+
+### Manual Browser Testing
+1. Serve files: `python3 -m http.server 8090` or `node serve.js`
+2. Open `http://localhost:8090/` in a browser
+3. Navigate all routes via sidebar (Dashboard, Subjects, Quick Review, Profile)
+4. Complete a full lesson flow: pick a subject → greeting → explanation → 3 questions → module complete
+5. Test light/dark theme toggle
+6. Verify localStorage persistence across page refresh
+7. Test slash commands in chat input (`/explain`, `/example`, `/hint`)
+8. Check mascot evolution reacts to level changes
+9. Verify responsive layout at different viewport widths
+
+### Automated Boot Simulation (Node.js)
+A headless simulation can verify all scripts load without errors:
+```bash
+node /tmp/eduai-test.js  # (script must be recreated if /tmp is cleared)
+```
+The simulation:
+- Loads all 45 JS files in index.html order via Node.js VM context
+- Sets `window` to equal the global scope (matching real browser behavior)
+- Verifies all 52 expected namespaces register on `window.EduAI`
+- Checks all 6 pages have `render()` and `init()` methods
+- Reports pass/fail for each script and namespace
 
 ## Changelog Maintenance
 
