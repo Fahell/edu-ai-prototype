@@ -8,6 +8,16 @@ All notable changes to this project are documented here. This log is updated eve
 
 - Phase 1 implementation in progress (Batches 1+2 complete, Batches 3-7 pending)
 
+
+## [2026-07-29] — Batch 3: Mock Data
+
+### Added
+- **js/mock/subjects.js** — 8 subjects with 4-6 modules each, knowledge graph with 30+ prerequisite edges (intra-subject and cross-subject), 8 custom subject suggestions for the triage flow
+- **js/mock/questions.js** — Question bank covering 8 subjects with 25+ questions across all 6 types (multiple-choice, true-false, fill-blank, drag-drop, slider, canvas), each with explanation and Socratic hint. Helper functions: getQuestions(subjectId, moduleId), getQuestionById(questionId)
+- **js/mock/ai-responses.js** — AI response templates for 3 personas (Prof. Sage, Coach Spark, Quiz Master) across 10 contexts: greeting, explanation, correct, incorrect-socratic, moduleComplete, streakActive, streakBroken, frustrated, speedLearner, slashCommands, warmup, fallback. All use {name}, {subject}, {module} placeholders
+- **js/mock/npcs.js** — 10 NPCs with names, avatars, XP, levels, ghost race speeds, weekly XP scores. Live ticker with 5 name templates, badge names, subject names, 8 event templates. Helper functions: generateTickerEvent(), getWeeklyLeaderboard(), getGhostRacer(difficulty)
+- **js/mock/shop-items.js** — Shop catalog: 5 visual themes, 7 avatar accessories (face/head/held slots), 6 mascot accessories (face/head/aura/neck slots), 7 titles. Helper functions: getAllItems(), getShopItemById(itemId)
+- **js/mock/warmup-puzzles.js** — 17 warm-up puzzles across 6 types (sequence, pattern, logic, math, riddle, rotation) with difficulty ratings. Helper functions: getRandomPuzzle(difficulty), getPuzzleById(puzzleId), getPuzzles(type)
 ---
 
 ## [2026-07-29] — Batch 1+2: CSS Design System & JS Core
