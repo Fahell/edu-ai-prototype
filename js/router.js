@@ -29,8 +29,8 @@
     const keys = [];
     // Escape special regex chars, then replace :param with capture groups
     const regexStr = pattern
-      .replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // escape (but we'll undo the \\:)
-      .replace(/\\:([a-zA-Z_][a-zA-Z0-9_]*)/g, (_, key) => {
+      .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      .replace(/:([a-zA-Z_][a-zA-Z0-9_]*)/g, (_, key) => {
         keys.push(key);
         return '([^/]+)';
       });
