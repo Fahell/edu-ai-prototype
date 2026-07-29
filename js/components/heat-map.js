@@ -25,7 +25,7 @@
         for (let d = 6; d >= 0; d--) {
           const date = new Date(today);
           date.setDate(date.getDate() - (w * 7 + d));
-          const key = date.toISOString().split('T')[0];
+          const key = date.toLocaleDateString('en-CA');
           const activity = heatmap[key];
           const level = activity ? Math.min(4, Math.ceil(activity.xpEarned / 25)) : 0;
           const label = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });

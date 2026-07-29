@@ -56,13 +56,18 @@
       if (!userBar || !npcBar) return;
 
       const duration = options?.duration || 30000;
+      const tickMs = 200; // fixed tick interval
+      const ticks = duration / tickMs;
       const npcSpeed = npc.ghostSpeed || 0.5;
       let userProgress = 0;
       let npcProgress = 0;
 
+      // Base increment per tick so user finishes in ~duration
+      const userBase = (100 / ticks) * 1.2; // slightly faster to feel engaging
+
       GhostRace._interval = setInterval(() => {
-        userProgress = Math.min(100, userProgress + (Math.random() * 3 + 1));
-        npcProgress = Math.min(100, npcProgress + npcSpeed * (Math.random() * 2 + 0.5));
+        userProgress = Math.min(100, userProgress + userBase * (Math.random() * 1.5 + 0.5));
+        npcProgress = Math.min(100, npcProgress + userBase * npcSpeed * (Math.random() * 1.5 + 0.5));
 
         userBar.style.width = userProgress + '%';
         npcBar.style.width = npcProgress + '%';
@@ -73,7 +78,7 @@
             options.onComplete({ userWon: userProgress >= npcProgress });
           }
         }
-      }, duration / 100);
+      }, tickMs);
     },
 
     /**
