@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Theme Overrides — Dark Mode
+   Activated via `data-theme="dark"` on <html>
+   ========================================================================== */
+
+html[data-theme="dark"] {
+  /* Backgrounds */
+  --color-bg-primary: #0F1117;
+  --color-bg-secondary: #1A1D27;
+  --color-bg-tertiary: #242836;
+  --color-bg-elevated: #1E2130;
+
+  /* Text */
+  --color-text-primary: #F1F3F5;
+  --color-text-secondary: #9CA3AF;
+  --color-text-muted: #6B7280;
+  --color-text-inverse: #0F1117;
+
+  /* Accent */
+  --color-accent: #818CF8;
+  --color-accent-hover: #6366F1;
+  --color-accent-light: #1E1B4B;
+  --color-accent-subtle: rgba(129, 140, 248, 0.1);
+
+  /* Semantic */
+  --color-success: #34D399;
+  --color-success-light: #064E3B;
+  --color-warning: #FBBF24;
+  --color-warning-light: #78350F;
+  --color-error: #F87171;
+  --color-error-light: #7F1D1D;
+
+  /* Gamification */
+  --color-streak: #FB923C;
+  --color-xp: #A78BFA;
+  --color-coin: #FACC15;
+
+  /* Graph */
+  --color-graph-node: #60A5FA;
+  --color-graph-mastered: #34D399;
+  --color-graph-progress: #FBBF24;
+  --color-graph-review: #F87171;
+  --color-graph-idle: #4B5563;
+
+  /* Borders */
+  --color-border: #2D3148;
+  --color-border-hover: #3D4260;
+  --color-divider: #1E2130;
+
+  /* Shadows — more subtle on dark backgrounds */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.3);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth theme transition on the root element */
+html {
+  transition: background-color var(--transition-slow),
+              color var(--transition-slow);
+}
+
+/* Ensure images don't look blown out in dark mode */
+html[data-theme="dark"] img {
+  opacity: 0.92;
+}
+
+/* Code blocks get slightly lighter background in dark mode */
+html[data-theme="dark"] code,
+html[data-theme="dark"] pre {
+  background: var(--color-bg-tertiary);
+}
