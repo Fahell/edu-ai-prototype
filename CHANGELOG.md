@@ -138,3 +138,8 @@ All notable changes to this project are documented here. This log is updated eve
 - **js/widgets/multiple-choice.js** — MultipleChoice extends WidgetBase: renders A/B/C/D options, click-to-select with visual highlight, confirm button (disabled until selection), validate against correct flag, visual feedback (green checkmark on correct, red X on wrong with shake), auto-awards XP (15 correct, 3 incorrect) via Gamification service
 - **js/components/chat-engine.js** — Chat orchestrator: init with messages container + input + context, addAIMessage with typing indicator delay (800-1500ms random), addUserMessage, addSystemMessage, addWidget returns Promise resolving on answer, slash command detection (/explain, /example, /hint, /skip, /review, /quiz, /persona), basic markdown formatting (**bold**, `code`, newlines), auto-scroll, busy state tracking
 - **js/pages/study.js** — Study page: renders chat shell with header (subject icon+name, module progress bar, back button), initializes ChatEngine, runs async lesson flow (greeting→explanation→loop{question→feedback}→module complete→XP+coins+badges), creates widget instances by question type (only multiple-choice implemented, others show placeholder), updates module state on completion (completed flag, question counts, currentModule advance)
+
+### Fixed (Batch 6 review)
+- **css/widgets.css** — Added Firefox slider thumb (`::-moz-range-thumb`) alongside webkit thumb for cross-browser support
+- **js/mock/ai-responses.js** — Added slash command templates for `/skip`, `/review`, `/quiz`, `/persona` (previously returned fallback)
+- **js/pages/study.js** — Wrapped `_startLesson()` in try/catch with user-facing error message and state cleanup on failure

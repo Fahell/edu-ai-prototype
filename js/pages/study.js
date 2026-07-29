@@ -114,70 +114,75 @@
 
       if (!subject || !module) return;
 
-      // Check for streak update
-      EduAI.Services.Gamification.checkStreak();
+      try {
+        // Check for streak update
+        EduAI.Services.Gamification.checkStreak();
 
-      // 1. Greeting
-      const greeting = AI.getGreeting(subject.name, module.name);
-      await engine.addAIMessage(greeting.text, greeting.persona);
+        // 1. Greeting
+        const greeting = AI.getGreeting(subject.name, module.name);
+        await engine.addAIMessage(greeting.text, greeting.persona);
 
-      // 2. Explanation
-      const explanation = AI.getExplanation(subject.name, module.name);
-      await engine.addAIMessage(explanation.text, explanation.persona);
+        // 2. Explanation
+        const explanation = AI.getExplanation(subject.name, module.name);
+        await engine.addAIMessage(explanation.text, explanation.persona);
 
-      // 3. Questions
-      const questions = EduAI.Mock.getQuestions(subjectId, module.id);
-      let correctCount = 0;
+        // 3. Questions
+        const questions = EduAI.Mock.getQuestions(subjectId, module.id);
+        let correctCount = 0;
 
-      for (let i = 0; i < questions.length; i++) {
-        const q = questions[i];
-        const widget = Study._createWidget(q);
+        for (let i = 0; i < questions.length; i++) {
+          const q = questions[i];
+          const widget = Study._createWidget(q);
 
-        if (!widget) {
-          // No widget for this question type, skip
-          await engine.addAIMessage(`(${q.type} question — widget not yet implemented)`, 'quiz');
-          continue;
+          if (!widget) {
+            // No widget for this question type, skip
+            await engine.addAIMessage(`(${q.type} question — widget not yet implemented)`, 'quiz');
+            continue;
+          }
+
+          const result = await engine.addWidget(widget);
+          const isCorrect = result.isCorrect;
+
+          if (isCorrect) correctCount++;
+
+          // Feedback
+          if (isCorrect) {
+            const feedback = AI.getCorrectFeedback();
+            await engine.addAIMessage(feedback.text, feedback.persona);
+          } else {
+            const feedback = AI.getIncorrectFeedback(q.socraticHint);
+            await engine.addAIMessage(feedback.text, feedback.persona);
+          }
         }
 
-        const result = await engine.addWidget(widget);
-        const isCorrect = result.isCorrect;
+        // 4. Module complete
+        const xpEarned = 50;
+        const coinsEarned = 20;
+        EduAI.Services.Gamification.addXP(xpEarned, 'module-complete');
+        EduAI.Services.Gamification.addCoins(coinsEarned, 'module-complete');
 
-        if (isCorrect) correctCount++;
+        // Update module state
+        Study._completeModule(subjectId, module.id, questions.length, correctCount);
 
-        // Feedback
-        if (isCorrect) {
-          const feedback = AI.getCorrectFeedback();
-          await engine.addAIMessage(feedback.text, feedback.persona);
+        const completion = AI.getModuleComplete(subject.name, module.name, xpEarned, coinsEarned);
+        await engine.addAIMessage(completion.text, completion.persona);
+
+        // Check badges
+        EduAI.Services.Gamification.checkBadgeAwards();
+
+        // Offer next module or catalog
+        const subjects = EduAI.Mock.Subjects;
+        const subjectModules = subjects[subjectId]?.modules || [];
+        const nextModuleIndex = module.id + 1;
+
+        if (nextModuleIndex < subjectModules.length) {
+          engine.addSystemMessage(`Next: ${subjectModules[nextModuleIndex].name} — Continue when ready!`);
         } else {
-          const feedback = AI.getIncorrectFeedback(q.socraticHint);
-          await engine.addAIMessage(feedback.text, feedback.persona);
+          engine.addSystemMessage(`🎉 You've completed all modules in ${subject.name}!`);
         }
-      }
-
-      // 4. Module complete
-      const xpEarned = 50;
-      const coinsEarned = 20;
-      EduAI.Services.Gamification.addXP(xpEarned, 'module-complete');
-      EduAI.Services.Gamification.addCoins(coinsEarned, 'module-complete');
-
-      // Update module state
-      Study._completeModule(subjectId, module.id, questions.length, correctCount);
-
-      const completion = AI.getModuleComplete(subject.name, module.name, xpEarned, coinsEarned);
-      await engine.addAIMessage(completion.text, completion.persona);
-
-      // Check badges
-      EduAI.Services.Gamification.checkBadgeAwards();
-
-      // Offer next module or catalog
-      const subjects = EduAI.Mock.Subjects;
-      const subjectModules = subjects[subjectId]?.modules || [];
-      const nextModuleIndex = module.id + 1;
-
-      if (nextModuleIndex < subjectModules.length) {
-        engine.addSystemMessage(`Next: ${subjectModules[nextModuleIndex].name} — Continue when ready!`);
-      } else {
-        engine.addSystemMessage(`🎉 You've completed all modules in ${subject.name}!`);
+      } catch (err) {
+        console.error('[Study] Lesson flow error:', err);
+        engine.addSystemMessage('Something went wrong during the lesson. Please try again.');
       }
     },
 

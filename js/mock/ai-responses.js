@@ -165,6 +165,30 @@
           'Think carefully about this: {hint}',
         ],
       },
+      pula: {
+        spark: [
+          'No problem, {name}! Let\'s move on to the next topic. You can always come back later! ➡️',
+          'Skipping ahead! Sometimes a change of pace helps. Let\'s go! 🚀',
+        ],
+      },
+      review: {
+        sage: [
+          'Great idea to review! Let me summarize the key points of {concept}. Repetition is the mother of learning.',
+          'Let\'s go over {concept} again. Here are the most important takeaways:',
+        ],
+      },
+      quiz: {
+        quiz: [
+          'Challenge accepted! Here\'s a question to test your understanding of {concept}.',
+          'Pop quiz time! Let\'s see how well you know {concept}. 🎯',
+        ],
+      },
+      persona: {
+        spark: [
+          'Sure thing! I\'m switching gears now. How can I help you, {name}? ⚡',
+          'Switching persona! What would you like to focus on?',
+        ],
+      },
     },
 
     // ── Warm-Up Puzzle ──────────────────────────────────────────────
