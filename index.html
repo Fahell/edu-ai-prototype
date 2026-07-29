@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduAI — Gamified educational platform with AI tutoring">
+  <title>EduAI — Learn Anything with AI</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS — load order per agents.md -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/widgets.css">
+  <link rel="stylesheet" href="css/gamification.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages/dashboard.css">
+  <link rel="stylesheet" href="css/pages/catalog.css">
+  <link rel="stylesheet" href="css/pages/profile.css">
+  <link rel="stylesheet" href="css/pages/triagem.css">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+</head>
+<body>
+  <!-- App Shell -->
+  <div id="app" class="app">
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="sidebar" role="navigation" aria-label="Main navigation">
+      <!-- Rendered by js/components/sidebar.js -->
+    </aside>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content" role="main">
+      <!-- Pages are rendered here by the router -->
+      <div id="page-container" class="page-container">
+        <!-- Loading state -->
+        <div class="page-loading">
+          <div class="page-loading__spinner"></div>
+          <p>Loading EduAI...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Modal Container -->
+    <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" hidden>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+
+    <!-- Confetti Canvas (mounted on demand) -->
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+    <!-- Matrix Upload Canvas (mounted on demand) -->
+    <canvas id="matrix-canvas" class="matrix-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <!-- JavaScript — load order per agents.md -->
+  <!-- 1. Core: state, router, storage (must be first) -->
+  <script src="js/state.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/services/storage.js"></script>
+
+  <!-- 2. Mock data -->
+  <script src="js/mock/ai-responses.js"></script>
+  <script src="js/mock/subjects.js"></script>
+  <script src="js/mock/questions.js"></script>
+  <script src="js/mock/shop-items.js"></script>
+  <script src="js/mock/npcs.js"></script>
+  <script src="js/mock/warmup-puzzles.js"></script>
+
+  <!-- 3. Services -->
+  <script src="js/services/ai-service.js"></script>
+  <script src="js/services/gamification.js"></script>
+  <script src="js/services/srs.js"></script>
+  <script src="js/services/mastery-predictor.js"></script>
+
+  <!-- 4. Widgets: base first, then specific widgets -->
+  <script src="js/widgets/widget-base.js"></script>
+  <script src="js/widgets/multiple-choice.js"></script>
+  <script src="js/widgets/true-false.js"></script>
+  <script src="js/widgets/fill-blank.js"></script>
+  <script src="js/widgets/drag-drop.js"></script>
+  <script src="js/widgets/slider.js"></script>
+  <script src="js/widgets/canvas-draw.js"></script>
+
+  <!-- 5. Components -->
+  <script src="js/components/modal.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/confetti.js"></script>
+  <script src="js/components/theme-toggle.js"></script>
+  <script src="js/components/avatar.js"></script>
+  <script src="js/components/xp-bar.js"></script>
+  <script src="js/components/streak-badge.js"></script>
+  <script src="js/components/mascot.js"></script>
+  <script src="js/components/typing-indicator.js"></script>
+  <script src="js/components/slash-commands.js"></script>
+  <script src="js/components/chat-engine.js"></script>
+  <script src="js/components/ghost-race.js"></script>
+  <script src="js/components/heat-map.js"></script>
+  <script src="js/components/radar-chart.js"></script>
+  <script src="js/components/knowledge-graph.js"></script>
+  <script src="js/components/daily-mix.js"></script>
+  <script src="js/components/matrix-upload.js"></script>
+  <script src="js/components/sidebar.js"></script>
+
+  <!-- 6. Pages -->
+  <script src="js/pages/dashboard.js"></script>
+  <script src="js/pages/catalog.js"></script>
+  <script src="js/pages/study.js"></script>
+  <script src="js/pages/review-shorts.js"></script>
+  <script src="js/pages/profile.js"></script>
+  <script src="js/pages/triagem.js"></script>
+
+  <!-- 7. App initialization (must be last) -->
+  <script src="js/app.js"></script>
+</body>
+</html>

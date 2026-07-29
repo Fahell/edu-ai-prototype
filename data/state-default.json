@@ -1,0 +1,137 @@
+{
+  "user": {
+    "name": "Student",
+    "level": 1,
+    "xp": 0,
+    "xpToNext": 100,
+    "coins": 50,
+    "streak": 0,
+    "lastActiveDate": null,
+    "badges": [],
+    "equippedTitle": null,
+    "equippedAvatarItems": [],
+    "equippedMascotItems": [],
+    "customSubjects": []
+  },
+  "subjects": {
+    "mathematics": {
+      "name": "Mathematics",
+      "icon": "📐",
+      "description": "From basic operations to algebra and geometry",
+      "difficulty": "beginner",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Basic Operations", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Fractions and Decimals", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "First-Degree Equations", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Quadratic Equations", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 4, "name": "Basic Geometry", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 5, "name": "Statistics and Probability", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "portuguese": {
+      "name": "Portuguese",
+      "icon": "📝",
+      "description": "Grammar, text interpretation, and writing",
+      "difficulty": "beginner",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Fundamentals of Grammar", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Nouns and Articles", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Verbs and Conjugations", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Text Interpretation", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 4, "name": "Argumentative Writing", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "logical-reasoning": {
+      "name": "Logical Reasoning",
+      "icon": "🧩",
+      "description": "Patterns, sequences, and logical deductions",
+      "difficulty": "intermediate",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Logical Sequences", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Analogies", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Syllogisms", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Truth Tables", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 4, "name": "Spatial Reasoning", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "history": {
+      "name": "History",
+      "icon": "🏛️",
+      "description": "World and local history through the ages",
+      "difficulty": "beginner",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Ancient Civilizations", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Middle Ages", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Renaissance and Exploration", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Industrial Revolution", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 4, "name": "Contemporary World", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "science": {
+      "name": "Science",
+      "icon": "🔬",
+      "description": "Physics, chemistry, and biology fundamentals",
+      "difficulty": "beginner",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Scientific Method", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Basic Physics", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Basic Chemistry", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Biology Fundamentals", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "english": {
+      "name": "English",
+      "icon": "🇬🇧",
+      "description": "Vocabulary, grammar, and reading comprehension",
+      "difficulty": "beginner",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Basic Vocabulary", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Present Tenses", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Past Tenses", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Reading Comprehension", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "programming": {
+      "name": "Programming",
+      "icon": "💻",
+      "description": "Logic, variables, functions, and algorithms",
+      "difficulty": "intermediate",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Computational Thinking", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Variables and Data Types", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Conditionals and Loops", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Functions", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 4, "name": "Basic Algorithms", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    },
+    "law": {
+      "name": "Law",
+      "icon": "⚖️",
+      "description": "Constitutional law, civil rights, and legal basics",
+      "difficulty": "advanced",
+      "currentModule": 0,
+      "modules": [
+        { "id": 0, "name": "Introduction to Law", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 1, "name": "Constitutional Principles", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 2, "name": "Fundamental Rights", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 },
+        { "id": 3, "name": "Civil Law Basics", "completed": false, "questionsAnswered": 0, "correctAnswers": 0 }
+      ]
+    }
+  },
+  "srs": {},
+  "chatHistory": {},
+  "activityHeatMap": {},
+  "shopPurchases": [],
+  "settings": {
+    "theme": "light",
+    "activePersona": null,
+    "slashCommandsEnabled": true
+  }
+}
