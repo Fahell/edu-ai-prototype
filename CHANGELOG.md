@@ -106,3 +106,10 @@ All notable changes to this project are documented here. This log is updated eve
 - **js/services/gamification.js** — Core gamification engine: XP curve (100 * 1.5^(n-1)), level calculation, title system (7 tiers from Newcomer to Grand Master), addXP with level-up detection, addCoins, daily streak checking (consecutive/broken/reset), activity heatmap recording, badge award system with automatic checks, floating XP animation
 - **js/components/xp-bar.js** — Animated XP progress bar: renders level badge + title + fill bar, subscribes to user.xp and user.level state changes, smooth CSS transition on width
 - **js/components/streak-badge.js** — Fire icon badge: shows streak count with fire animation, inactive state with sleep icon, subscribes to user.streak changes
+
+## [2026-07-29] — Code Review Fixes (Batch 4)
+
+### Fixed
+- **css/components.css** — Added toast base styles and all variant styles (success, error, warning, xp, badge, coins, level-up, streak) — previously only variants were in gamification.css while base styles were injected inline by JS
+- **js/components/toast.js** — Removed inline style injection (`document.head.appendChild(style)`). Toast styles now live solely in css/components.css
+- **js/services/gamification.js** — Added `silent` option to `addXP(amount, source, {silent})` and `addCoins(amount, source, {silent})` to suppress toasts/animations. `checkStreak()` now defaults to silent=true at startup to avoid showing XP toasts before user interaction. Also fixed date comparison to use local time (`toLocaleDateString('en-CA')`) instead of UTC (`toISOString`) to prevent timezone-related streak misfires. `addXP` now automatically calls `recordActivity()` so callers don't need to remember to call both.

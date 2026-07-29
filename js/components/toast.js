@@ -105,46 +105,7 @@
     },
   };
 
-  // Inject toast styles if not already in components.css
-  // (These are intentionally inline as a fallback)
-  const style = document.createElement('style');
-  style.textContent = `
-    .toast {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      padding: var(--space-3) var(--space-4);
-      background: var(--color-bg-secondary);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      font-size: var(--text-sm);
-      color: var(--color-text-primary);
-      max-width: 380px;
-      pointer-events: auto;
-    }
-    .toast__icon { font-size: var(--text-lg); flex-shrink: 0; }
-    .toast__message { flex: 1; }
-    .toast__close {
-      background: none;
-      border: none;
-      font-size: var(--text-lg);
-      color: var(--color-text-muted);
-      cursor: pointer;
-      padding: 0 var(--space-1);
-      line-height: 1;
-    }
-    .toast__close:hover { color: var(--color-text-primary); }
-    .toast--xp { border-left: 3px solid var(--color-xp); }
-    .toast--streak { border-left: 3px solid var(--color-streak); }
-    .toast--badge { border-left: 3px solid var(--color-coin); }
-    .toast--coins { border-left: 3px solid var(--color-coin); }
-    .toast--level-up { border-left: 3px solid var(--color-xp); background: var(--color-accent-light); }
-    .toast--success { border-left: 3px solid var(--color-success); }
-    .toast--error { border-left: 3px solid var(--color-error); }
-    .toast--warning { border-left: 3px solid var(--color-warning); }
-  `;
-  document.head.appendChild(style);
+  // Toast styles are defined in css/components.css
 
   window.EduAI.Components.Toast = Toast;
 })();

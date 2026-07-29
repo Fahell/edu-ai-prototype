@@ -77,10 +77,14 @@
 
     /**
      * Add XP to the user. Handles level-up detection and notifications.
+     * Also records activity in the heatmap automatically.
      * @param {number} amount - XP to add
      * @param {string} [source] - What earned the XP (for logging)
+     * @param {Object} [options]
+     * @param {boolean} [options.silent=false] - If true, suppress toasts and animations
      */
-    addXP(amount, source) {
+    addXP(amount, source, options) {
+      const silent = options && options.silent;
       const currentXP = EduAI.state.get('user.xp') || 0;
       const currentLevel = EduAI.state.get('user.level') || 1;
       const newXP = currentXP + amount;
@@ -89,19 +93,26 @@
       EduAI.state.set('user.xp', newXP);
       EduAI.state.set('user.xpToNext', Gamification.getXPToNextLevel(newLevel));
 
-      // Show XP float animation
-      Gamification._showXPFloat(amount);
+      if (!silent) {
+        // Show XP float animation
+        Gamification._showXPFloat(amount);
 
-      // Show toast
-      const Toast = EduAI.Components && EduAI.Components.Toast;
-      if (Toast) {
-        Toast.show(`+${amount} XP`, 'xp', 2000);
+        // Show toast
+        const Toast = EduAI.Components && EduAI.Components.Toast;
+        if (Toast) {
+          Toast.show(`+${amount} XP`, 'xp', 2000);
+        }
       }
+
+      // Record activity in heatmap
+      Gamification.recordActivity(0, amount);
 
       // Check for level up
       if (newLevel > currentLevel) {
         EduAI.state.set('user.level', newLevel);
-        Gamification._onLevelUp(newLevel);
+        if (!silent) {
+          Gamification._onLevelUp(newLevel);
+        }
       }
     },
 
@@ -109,30 +120,40 @@
      * Add coins to the user.
      * @param {number} amount
      * @param {string} [source]
+     * @param {Object} [options]
+     * @param {boolean} [options.silent=false] - If true, suppress toast
      */
-    addCoins(amount, source) {
+    addCoins(amount, source, options) {
+      const silent = options && options.silent;
       const current = EduAI.state.get('user.coins') || 0;
       EduAI.state.set('user.coins', current + amount);
 
-      const Toast = EduAI.Components && EduAI.Components.Toast;
-      if (Toast) {
-        Toast.show(`+${amount} 🪙`, 'coins', 2000);
+      if (!silent) {
+        const Toast = EduAI.Components && EduAI.Components.Toast;
+        if (Toast) {
+          Toast.show(`+${amount} 🪙`, 'coins', 2000);
+        }
       }
     },
 
     /**
      * Check and update the daily streak.
      * Call this once at app startup.
+     * @param {Object} [options]
+     * @param {boolean} [options.silent=true] - If true (default), suppress toasts and animations
      */
-    checkStreak() {
+    checkStreak(options) {
+      const silent = options ? options.silent !== false : true; // default silent
       const lastActive = EduAI.state.get('user.lastActiveDate');
-      const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+      // Use local date to avoid timezone issues
+      const now = new Date();
+      const today = now.toLocaleDateString('en-CA'); // YYYY-MM-DD in local time
 
       if (lastActive === today) return; // Already counted today
 
-      const yesterday = new Date();
+      const yesterday = new Date(now);
       yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      const yesterdayStr = yesterday.toLocaleDateString('en-CA');
 
       if (lastActive === yesterdayStr) {
         // Consecutive day — increment streak
@@ -140,12 +161,12 @@
         EduAI.state.set('user.streak', newStreak);
         EduAI.state.set('user.lastActiveDate', today);
 
-        // Streak bonus XP
+        // Streak bonus XP (silent during startup)
         if (newStreak % 7 === 0) {
-          Gamification.addXP(50, 'streak-milestone');
-          Gamification.addCoins(50, 'streak-milestone');
+          Gamification.addXP(50, 'streak-milestone', { silent });
+          Gamification.addCoins(50, 'streak-milestone', { silent });
         } else {
-          Gamification.addXP(10, 'streak-daily');
+          Gamification.addXP(10, 'streak-daily', { silent });
         }
       } else if (lastActive === null) {
         // First time ever
@@ -154,7 +175,7 @@
       } else {
         // Streak broken
         const oldStreak = EduAI.state.get('user.streak') || 0;
-        if (oldStreak > 0) {
+        if (oldStreak > 0 && !silent) {
           const Toast = EduAI.Components && EduAI.Components.Toast;
           if (Toast) {
             Toast.show('Streak broken! Start a new one today. 💪', 'warning', 5000);
