@@ -128,6 +128,18 @@ There is no test framework. Validate by:
 6. Testing slash commands in chat input
 7. Checking mascot evolution reacts to level changes
 
+## Changelog Maintenance
+
+**This is a mandatory rule for all agents working on this project.**
+
+- `CHANGELOG.md` must be updated **every development turn** (i.e., every time code or docs are committed)
+- Each entry should include: date, what was added/changed/fixed, which files were affected, and a brief description of the rationale
+- Use the format: `## [YYYY-MM-DD] — Short Title` followed by `### Added`, `### Changed`, `### Fixed` sections as appropriate
+- **When the changelog grows long**, summarize older entries into condensed blocks (e.g., group multiple small fixes under a single bullet) to maintain readability without losing historical context
+- Keep the `[Unreleased]` section at the top for work-in-progress items
+- The changelog serves as the **single source of truth** for any agent joining the project — it should be possible to understand the full project history by reading only this file
+- Do not duplicate information that is already in `docs/spec.md` or `docs/phase-1-plan.md` — the changelog tracks *what happened*, not *what is planned*
+
 ## Constraints
 
 - **Zero external dependencies** — No CDN libraries, no npm packages
