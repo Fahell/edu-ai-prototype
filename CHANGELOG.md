@@ -122,3 +122,7 @@ All notable changes to this project are documented here. This log is updated eve
 - **js/pages/dashboard.js** — Dashboard page: time-based greeting (morning/afternoon/evening), streak encouragement, XP bar with level, mascot with stage evolution (4 stages based on level), daily mix (4 random subjects with new/review/SRS labels), subjects in progress (from state, filtered by activity), achievements grid (last 6 badges), weekly leaderboard (top 5 NPCs + user position), coins with shop link. Subject card clicks navigate to #/chat/:id
 - **css/pages/catalog.css** — Catalog page: search bar with icon, difficulty filter chips, subject grid (auto-fill 260px min), subject cards (icon, title, difficulty badge color-coded, description, module count, hours, studying count, progress bar, SRS badge, continue/start button), custom subject dashed card, no-results empty state. Responsive at 768px
 - **js/pages/catalog.js** — Catalog page: renders 8 subjects from Mock.Subjects, search input filters by name, difficulty chips filter (all/beginner/intermediate/advanced), subject cards show progress from state, custom subject card routes to #/triagem, no-results handling with dynamic message
+
+### Fixed (Batch 5 review)
+- **sidebar.js** — Fixed type annotation from NodeJS.Timeout to number (browser API). Fixed block div inside inline span for XPBar wrapper.
+- **catalog.js** — Removed dead srsHTML variable (always empty string). Changed random studying count to deterministic hash-based count for consistent rendering across page visits.

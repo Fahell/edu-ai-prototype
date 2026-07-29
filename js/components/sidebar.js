@@ -8,7 +8,7 @@
   window.EduAI = window.EduAI || {};
   window.EduAI.Components = window.EduAI.Components || {};
 
-  /** @type {NodeJS.Timeout|null} */
+  /** @type {number|null} */
   let _tickerInterval = null;
 
   const NAV_ITEMS = [
@@ -73,7 +73,7 @@
 
           <div class="sidebar__user-stats">
             <div class="sidebar__user-stat">
-              <span id="sidebar-xp-bar">${EduAI.Components.XPBar.render()}</span>
+              <div id="sidebar-xp-bar">${EduAI.Components.XPBar.render()}</div>
             </div>
           </div>
 

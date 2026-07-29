@@ -111,11 +111,13 @@
       const modules = subject.modules || [];
       const moduleCount = modules.length;
       const hours = subject.estimatedHours || '?';
-      const studying = Math.floor(Math.random() * 50) + 10;
+      // Deterministic "studying" count based on subject ID hash
+      let hash = 0;
+      for (let i = 0; i < id.length; i++) hash = ((hash << 5) - hash + id.charCodeAt(i)) | 0;
+      const studying = (Math.abs(hash) % 45) + 12;
 
       // Progress
       let progressHTML = '';
-      let srsHTML = '';
       if (state && state.modules) {
         const completed = state.modules.filter((m) => m.completed).length;
         const progress = moduleCount > 0 ? (completed / moduleCount) * 100 : 0;
@@ -149,8 +151,7 @@
           </div>
           ${progressHTML}
           <div class="subject-card__footer">
-            ${srsHTML}
-            <span class="btn btn--primary btn--sm">${buttonText}</span>
+              <span class="btn btn--primary btn--sm">${buttonText}</span>
           </div>
         </div>
       `;
